@@ -12,6 +12,7 @@ resource "aws_subnet" "main" {
   vpc_id = aws_vpc.main.id
 # cidr_block = "10.0.1.0/24"
   cidr_block = element(var.subnets_cidr, count.index)
+  availability_zone = element(var.az, count.index)
 
   tags = {
       Name = "subnet-${count.index}"
